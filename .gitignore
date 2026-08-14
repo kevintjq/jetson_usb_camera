@@ -1,0 +1,25 @@
+# Catkin build output
+build/
+devel/
+install/
+log/
+logs/
+.catkin_tools/
+.catkin_workspace
+
+# ROS and generated files
+*.bag
+*.bag.active
+*.pyc
+__pycache__/
+compile_commands.json
+
+# IDE and local configuration
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db

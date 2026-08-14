@@ -1,0 +1,38 @@
+<launch>
+
+    <node pkg="jetson_gst_camera"
+          type="jetson_gst_camera_node"
+          name="jetson_gst_camera"
+          output="screen">
+
+        <param name="device" value="/dev/video0"/>
+
+        <param name="width" value="1920"/>
+        <param name="height" value="1080"/>
+
+        <param name="framerate" value="60"/>
+
+        <param name="frame_id" value="camera"/>
+
+        <param name="image_topic"
+               value="/camera/image_raw"/>
+
+        <param name="camera_name"
+               value="camera"/>
+
+        <param name="camera_info_topic"
+               value="/camera/camera_info"/>
+
+        <!-- Set this to a calibrated camera YAML URL when available. -->
+        <param name="camera_info_url"
+               value=""/>
+
+        <param name="reconnect_interval"
+               value="2.0"/>
+
+        <param name="frame_timeout"
+               value="3.0"/>
+
+    </node>
+
+</launch>

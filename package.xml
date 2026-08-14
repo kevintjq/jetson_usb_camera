@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package format="2">
+
+  <name>jetson_gst_camera</name>
+  <version>0.0.1</version>
+
+  <description>
+    Jetson hardware accelerated USB camera driver using GStreamer.
+  </description>
+
+  <maintainer email="kevintjq@users.noreply.github.com">kevintjq</maintainer>
+  <license>MIT</license>
+  <url type="website">https://github.com/kevintjq/jetson_usb_camera</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>roscpp</build_depend>
+  <build_depend>camera_info_manager</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+
+  <exec_depend>roscpp</exec_depend>
+  <exec_depend>camera_info_manager</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+
+</package>
