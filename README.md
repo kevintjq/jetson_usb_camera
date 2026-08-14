@@ -37,9 +37,8 @@ sudo apt install \
 
 ```bash
 mkdir -p ~/catkin_ws/src
-git clone https://github.com/kevintjq/jetson_usb_camera.git \
-  ~/catkin_ws/src/jetson_usb_camera
-
+cd ~/catkin_ws/src
+git clone https://github.com/kevintjq/jetson_usb_camera.git
 cd ~/catkin_ws
 catkin_make
 source devel/setup.bash
