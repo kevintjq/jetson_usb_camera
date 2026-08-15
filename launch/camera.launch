@@ -23,13 +23,7 @@
         <param name="camera_info_topic"
                value="/camera/camera_info"/>
 
-        <!-- Set this to a calibrated camera YAML URL when available. -->
-        <param name="camera_info_url"
-               value=""/>
-
-        <!-- After calibration, copy config/camera_info.yaml.example to
-             config/camera_info.yaml and uncomment the following parameter. -->
-        <!--
+        <!-- Use the calibrated file here after editing config/camera_info.yaml.
         <param name="camera_info_url"
                value="file://$(find jetson_gst_camera)/config/camera_info.yaml"/>
         -->

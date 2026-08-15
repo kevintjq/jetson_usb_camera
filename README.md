@@ -87,21 +87,7 @@ v4l2-ctl --list-formats-ext -d /dev/video0
 
 没有标定文件时，节点仍会发布 `CameraInfo`，但内参和畸变参数无效。
 
-完成标定后，在 `launch/camera.launch` 中配置：
-
-```xml
-<param name="camera_info_url"
-       value="file://$(find jetson_gst_camera)/config/camera_info.yaml"/>
-```
-
-包内提供了示例文件：
-
-```bash
-cd ~/catkin_ws/src/jetson_usb_camera
-cp config/camera_info.yaml.example config/camera_info.yaml
-```
-
-然后将其中的占位参数替换为真实标定结果，并取消 `launch/camera.launch` 中对应参数的注释。
+包内直接提供 `config/camera_info.yaml`。编辑它后，取消 `launch/camera.launch` 里的标定路径注释即可。
 
 不要使用未经实际标定生成的 YAML，否则会影响视觉定位、测距和图像校正结果。
 
@@ -121,7 +107,7 @@ jetson_usb_camera/
   package.xml
   src/jetson_gst_camera.cpp
   launch/camera.launch
-  config/camera_info.yaml.example
+  config/camera_info.yaml
   README.md
   LICENSE
 ```

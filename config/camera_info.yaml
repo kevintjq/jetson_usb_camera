@@ -1,6 +1,6 @@
-# CameraInfo example for jetson_gst_camera.
-# These values are placeholders only and must be replaced by real calibration
-# results before using this file for vision, SLAM, or measurement.
+# CameraInfo template for jetson_gst_camera.
+# Replace these placeholder values with real calibration results before using
+# this file for vision, SLAM, or measurement.
 
 image_width: 1920
 image_height: 1080
