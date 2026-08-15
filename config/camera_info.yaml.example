@@ -1,0 +1,35 @@
+# CameraInfo example for jetson_gst_camera.
+# These values are placeholders only and must be replaced by real calibration
+# results before using this file for vision, SLAM, or measurement.
+
+image_width: 1920
+image_height: 1080
+camera_name: camera
+
+camera_matrix:
+  rows: 3
+  cols: 3
+  data: [0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0]
+
+distortion_model: plumb_bob
+
+distortion_coefficients:
+  rows: 1
+  cols: 5
+  data: [0.0, 0.0, 0.0, 0.0, 0.0]
+
+rectification_matrix:
+  rows: 3
+  cols: 3
+  data: [1.0, 0.0, 0.0,
+         0.0, 1.0, 0.0,
+         0.0, 0.0, 1.0]
+
+projection_matrix:
+  rows: 3
+  cols: 4
+  data: [0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0]

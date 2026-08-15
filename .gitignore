@@ -13,6 +13,7 @@ logs/
 *.pyc
 __pycache__/
 compile_commands.json
+config/camera_info.yaml
 
 # IDE and local configuration
 .vscode/
