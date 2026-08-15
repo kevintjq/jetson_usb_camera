@@ -131,18 +131,20 @@ public:
                 camera_info_topic_,
                 2);
 
-        camera_info_manager_.reset(
-            new camera_info_manager::CameraInfoManager(
-                nh,
-                camera_name_,
-                camera_info_url_));
-
-        if (!camera_info_url_.empty() &&
-            !camera_info_manager_->isCalibrated())
+        if (!camera_info_url_.empty())
         {
-            ROS_WARN(
-                "Camera calibration could not be loaded from URL: %s",
-                camera_info_url_.c_str());
+            camera_info_manager_.reset(
+                new camera_info_manager::CameraInfoManager(
+                    nh,
+                    camera_name_,
+                    camera_info_url_));
+
+            if (!camera_info_manager_->isCalibrated())
+            {
+                ROS_WARN(
+                    "Camera calibration could not be loaded from URL: %s",
+                    camera_info_url_.c_str());
+            }
         }
 
         ROS_INFO("========================================");
@@ -542,33 +544,35 @@ private:
 
         image_pub_.publish(msg);
 
+        sensor_msgs::CameraInfo camera_info;
+
         if (camera_info_manager_)
         {
-            sensor_msgs::CameraInfo camera_info =
+            camera_info =
                 camera_info_manager_->getCameraInfo();
-
-            camera_info.header = msg->header;
-
-            if (camera_info.width == 0)
-                camera_info.width = msg->width;
-
-            if (camera_info.height == 0)
-                camera_info.height = msg->height;
-
-            if (camera_info.width != msg->width ||
-                camera_info.height != msg->height)
-            {
-                ROS_WARN_THROTTLE(
-                    5.0,
-                    "CameraInfo size %ux%u differs from image size %ux%u.",
-                    camera_info.width,
-                    camera_info.height,
-                    msg->width,
-                    msg->height);
-            }
-
-            camera_info_pub_.publish(camera_info);
         }
+
+        camera_info.header = msg->header;
+
+        if (camera_info.width == 0)
+            camera_info.width = msg->width;
+
+        if (camera_info.height == 0)
+            camera_info.height = msg->height;
+
+        if (camera_info.width != msg->width ||
+            camera_info.height != msg->height)
+        {
+            ROS_WARN_THROTTLE(
+                5.0,
+                "CameraInfo size %ux%u differs from image size %ux%u.",
+                camera_info.width,
+                camera_info.height,
+                msg->width,
+                msg->height);
+        }
+
+        camera_info_pub_.publish(camera_info);
     }
 
     void stop()
