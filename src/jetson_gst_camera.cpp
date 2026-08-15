@@ -473,7 +473,7 @@ private:
         if (!buffer)
             return;
 
-        GstVideoFrame frame = GST_VIDEO_FRAME_INIT;
+        GstVideoFrame frame = {};
         if (!gst_video_frame_map(
                 &frame,
                 &video_info,
@@ -491,7 +491,8 @@ private:
         const size_t row_bytes =
             static_cast<size_t>(width) * 3;
         const guint8 *source =
-            GST_VIDEO_FRAME_PLANE_DATA(&frame, 0);
+            static_cast<const guint8 *>(
+                GST_VIDEO_FRAME_PLANE_DATA(&frame, 0));
         const gint source_stride =
             GST_VIDEO_FRAME_PLANE_STRIDE(&frame, 0);
 
