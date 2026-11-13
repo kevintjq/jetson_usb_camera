@@ -1,4 +1,6 @@
 <launch>
+    <!-- Keep BGR8 for existing OpenCV consumers; use rgba8 to skip BGR packing. -->
+    <arg name="output_encoding" default="bgr8"/>
 
     <node pkg="jetson_gst_camera"
           type="jetson_gst_camera_node"
@@ -11,6 +13,8 @@
         <param name="height" value="1080"/>
 
         <param name="framerate" value="60"/>
+        <param name="output_encoding" value="$(arg output_encoding)"/>
+        <param name="max_frame_age" value="0.5"/>
 
         <param name="frame_id" value="camera"/>
 
@@ -37,3 +41,4 @@
     </node>
 
 </launch>
+
