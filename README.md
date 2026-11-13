@@ -93,6 +93,12 @@ catkin_make
 source ~/catkin_ws/devel/setup.bash
 ```
 
+仓库目录名为 `jetson_usb_camera`，ROS 包名为 `jetson_gst_camera`；`roslaunch` 使用的是包名。若提示找不到包，请在当前终端重新加载上述工作空间环境，并检查：
+
+```bash
+rospack find jetson_gst_camera
+```
+
 启动摄像头：
 
 ```bash
@@ -232,6 +238,10 @@ v4l2-ctl --list-formats-ext -d /dev/video0
 ```
 
 核对设备路径、分辨率、帧率和终端提示的插件。设备声明支持的模式仍可能受 USB 带宽、供电或系统负载影响。
+
+### 提示设备忙或无法打开设备
+
+先关闭使用同一摄像头的其他驱动节点、视频软件或采集程序，再重新启动。若有多台摄像头，结合 `v4l2-ctl --list-devices` 确认目标设备，避免重复打开同一个视频接口。
 
 ### 打开 rqt 后 CPU 升高
 
