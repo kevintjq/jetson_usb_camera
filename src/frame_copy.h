@@ -37,10 +37,9 @@ inline void bgrxToBgr(const uint8_t* source, std::size_t source_stride,
   }
 }
 
-inline void copyRgba(const uint8_t* source, std::size_t source_stride,
-                     uint8_t* destination, std::size_t width, std::size_t height)
+inline void copyPacked(const uint8_t* source, std::size_t source_stride,
+                       uint8_t* destination, std::size_t row_bytes, std::size_t height)
 {
-  const std::size_t row_bytes = width * 4;
   if (source_stride == row_bytes) {
     std::memcpy(destination, source, row_bytes * height);
     return;
